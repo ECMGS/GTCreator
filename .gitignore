@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Be sure not to upload mp4 created files
+*.mp4

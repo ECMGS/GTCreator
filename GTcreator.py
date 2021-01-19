@@ -1,19 +1,19 @@
 import ffmpeg
-import graphviz
 
 from os import listdir
 from os.path import isfile, join, normpath
 
-def getFilesFromFolder(folderArr):
-    fileArr = []
-    for folder in folderArr:
-        allFiles = listdir(normpath(folder))
-        for file in allFiles:
-            fileURL = join(folder, file)
-            if isfile(fileURL):
-                fileArr.append(fileURL)
-    fileArr.sort() 
-    return fileArr 
+from sys import argv, exit
+
+def parseFoldersFromArgs():
+    folderArr = []
+    if (len(argv) == 1):
+        print("no files provided")        
+        exit(0)
+        return
+    for URL in argv:
+       folderArr.append(URL) 
+    return folderArr
 
 def mergePicturesIntoVID(folder):
     images = ffmpeg.input(folder+"*.JPG", pattern_type="glob", framerate=25)
@@ -31,11 +31,13 @@ def exportToMP4(stream):
     out.run()
 
 def __main__():
-    folderArr = ['/home/ecmgs/100GOPRO/', '/home/ecmgs/101GOPRO/']
+    folderArr = []
+
+    folderArr = parseFoldersFromArgs()
 
     imageStreamArr = []
-    for folder in folderArr:
-        imageStreamArr.append(mergePicturesIntoVID(folder))
+    for i in range(1, len(folderArr)):
+        imageStreamArr.append(mergePicturesIntoVID(folderArr[i]))
     
     print(imageStreamArr)
 
