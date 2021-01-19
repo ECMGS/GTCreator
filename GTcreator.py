@@ -5,6 +5,8 @@ from os.path import isfile, join, normpath
 
 from sys import argv, exit
 
+import config
+
 def parseFoldersFromArgs():
     folderArr = []
     if (len(argv) == 1):
@@ -16,8 +18,8 @@ def parseFoldersFromArgs():
     return folderArr
 
 def mergePicturesIntoVID(folder):
-    images = ffmpeg.input(folder+"*.JPG", pattern_type="glob", framerate=25)
-    reescaledImages = images.filter('scale', size='hd1080')
+    images = ffmpeg.input(folder+"*."+config.input_format, pattern_type="glob", framerate=config.fps)
+    reescaledImages = images.filter('scale', size=config.video_size)
     return reescaledImages
 
 def mergeFolderVideos(vidArr):
@@ -27,7 +29,7 @@ def mergeFolderVideos(vidArr):
     return stream
 
 def exportToMP4(stream):
-    out = ffmpeg.output(stream, "test.mp4", format="mp4", crf=20, pix_fmt="yuv420p")
+    out = ffmpeg.output(stream, config.out_name, codec=config.codec, format=config.video_format, crf=20, pix_fmt=config.pix_fmt)
     out.run()
 
 def __main__():
@@ -35,6 +37,7 @@ def __main__():
 
     folderArr = parseFoldersFromArgs()
 
+    print("parsing "+str(len(folderArr))+" folders")
     imageStreamArr = []
     for i in range(1, len(folderArr)):
         imageStreamArr.append(mergePicturesIntoVID(folderArr[i]))
