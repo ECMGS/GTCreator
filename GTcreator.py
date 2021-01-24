@@ -21,7 +21,7 @@ def inputParser():
     # Optional arguments
     parser.add_argument("-o", "--output_file", help="sets the name of the output file")
     parser.add_argument("-c", "--codec", help="sets the codec for processing the video, refer to ffmpeg codec section in order to see which codec to use")
-    parser.add_argument("-p", "--photo-format", help="the format of the pictures that are going to be converted to video")
+    parser.add_argument("-p", "--photo_format", help="the format of the pictures that are going to be converted to video")
     parser.add_argument("-f", "--fps", help="fps of the output video")
     parser.add_argument("-s", "--video_size", help="video size as used in the ffmpeg parameters, for example hd1080")
     return parser.parse_args()
