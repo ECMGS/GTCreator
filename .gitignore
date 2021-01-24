@@ -130,3 +130,6 @@ dmypy.json
 
 # Be sure not to upload mp4 created files
 *.mp4
+
+# Dont upload any pypi info
+setup.py
