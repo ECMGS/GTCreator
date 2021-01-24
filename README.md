@@ -25,11 +25,4 @@ for example, this command will create a timelapse using files from two different
    GTCreator -i ~/100GOPRO ~/101GOPRO -o timelapse.mp4
 ```
 
-**Options**
-
--h --help:            Shows the help
--i --input_folders:   The input folders to be imported
--c --codec:           The codec for processing the video, refer to ffmpeg codec section in order to see which codec to use
--p --photo_format:    The format of the pictures that are going to be converted to video
--f --fps:             FPS of the output video
--s --video_size:      The video size as specified in the ffmpeg library, for example hd1080 or hd720
+You can find the documentation of all the commands by using `GTCreator.py -h`
