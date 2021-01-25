@@ -6,7 +6,7 @@ from os.path import isfile, join, normpath
 
 from sys import argv, exit
 
-import config
+from . import config
 
 def inputParser():
     """
@@ -79,5 +79,6 @@ def __main__():
 
     stream = mergeFolderVideos(imageStreamArr)
     exportToVideo(stream)
-    
-__main__()
+
+if __name__ == "__main__":
+    __main__()
