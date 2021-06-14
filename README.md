@@ -8,7 +8,7 @@ GTCreator uses the python-ffmpeg library to automate the process of creating tim
 FFmpeg should be installed and added to path in order for GTCreator to work properly
 
 ```
-   git clone https://github.com/ECMGS/GTCreator/edit/main/README.md
+   git clone https://github.com/ECMGS/GTCreator/
    cd GTCreator
    pip install .
 ```
